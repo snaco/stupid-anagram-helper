@@ -12,7 +12,6 @@ import curses
 from time import sleep
 import re
 import random
-import base64
 
 frame = 0
 valid_characters = re.compile(r'[a-zA-Z ]')
@@ -23,14 +22,8 @@ base_character_set = []
 working_character_set = []
 anagram = ''
 error = None
-msg = 'aaaagimmmnnoorrsuy'
 meme_spinner = ['your', 'mom', 'is', 'an', 'anagram']
 arrow_spinner = ['▹▹▹▹▹', '▸▹▹▹▹', '▹▸▹▹▹', '▹▹▸▹▹', '▹▹▹▸▹', '▹▹▹▹▸']
-
-for i in meme_spinner:
-    print(base64.encodebytes(i.encode('utf-8')))
-    
-
 
 def draw_prompt(window: curses.window):
     current_arrow_frame = arrow_spinner[frame % 6]
@@ -157,8 +150,8 @@ def main(window: curses.window):
     sleep(1)
     window.clear()
 
-# window = curses.initscr()
-# curses.echo(False)
-# curses.halfdelay(1)
-# main(window)
-# curses.endwin()
+window = curses.initscr()
+curses.echo(False)
+curses.halfdelay(1)
+main(window)
+curses.endwin()
